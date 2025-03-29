@@ -26,9 +26,7 @@ Ensure the following are installed on your system:
 
 1. Set the startup project in Visual Studio.
 2. Update the database connection string in `Web.config` if needed.
-3. Open Package Manager Console and run these three command:
-   1. enable-migrations
-   2. add-migration initialMigration
+3. Open Package Manager Console and run:
    3. update-database
    
 4. Press F5 or click "Start Debugging".
