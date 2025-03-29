@@ -1,0 +1,73 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-list"></span> Product List</h3>
+    </div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" name="searchQuery" class="form-control" placeholder="Search by Name" value="@Request.QueryString["searchQuery"]" />
+
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    @Html.ActionLink("Reset", "Index",null, new { @class = "btn btn-warning btn-sm" })
+                </div>
+
+            </div>
+
+
+        }
+
+    <br />
+
+        <p>
+            @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus btn btn-primary btn-sm" })
+        </p>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>SKU</th>
+                        <th>Warehouse</th>
+                        <th>Quantity In Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.SKU</td>
+                            <td>@item.Warehouse.Name</td>
+                            <td>@item.QuantityInStock</td>
+                            <td>
+
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
