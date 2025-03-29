@@ -26,7 +26,7 @@ namespace InventoryManagementSystem.Controllers
             }
             var result =products.ToList();
             return Ok( result);
-        }
+        }   
 
         // GET: api/products/{id}
         [HttpGet, Route("{id:int}")]
